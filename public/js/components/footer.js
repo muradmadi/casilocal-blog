@@ -16,9 +16,11 @@ class Footer {
           { text: 'Contact', href: '/contact.html' }
         ],
         categories: [
-          { text: 'Restaurants', href: '/blog/index.html?category=restaurants' },
-          { text: 'Bars', href: '/blog/index.html?category=bars' },
-          { text: 'Events', href: '/blog/index.html?category=events' }
+          { text: 'Restaurantes', href: '/blog/category/restaurants.html' },
+          { text: 'Bares', href: '/blog/category/bars.html' },
+          { text: 'Eventos', href: '/blog/category/events.html' },
+          { text: 'Lugares de Estudio', href: '/blog/category/study-spots.html' },
+          { text: 'Presupuesto', href: '/blog/category/budget.html' }
         ]
       },
       social: options.social || [],
@@ -58,7 +60,7 @@ class Footer {
           <div class="footer-content">
             <div class="footer-section">
               <h3>CasiLocal</h3>
-              <p>Your guide to the best restaurants, bars, and events in Madrid for students.</p>
+              <p>Madrid, sin filtros. Tu guía estática de la capital. Sin trampas turísticas, solo los lugares donde los locales realmente viven, comen y se quedan.</p>
             </div>
             <div class="footer-section">
               <h3>Quick Links</h3>
