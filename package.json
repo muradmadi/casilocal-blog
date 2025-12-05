@@ -1,0 +1,16 @@
+{
+  "name": "casilocal-blog",
+  "version": "1.0.0",
+  "description": "CasiLocal blog for students in Madrid",
+  "scripts": {
+    "start": "http-server public -p 8080 -a 0.0.0.0",
+    "dev": "live-server public --port=8080 --host=0.0.0.0 --open=/",
+    "build": "echo 'Build process - ready for static site generation' && npm run build:copy",
+    "build:copy": "node -e \"console.log('Copying static assets...'); require('fs').mkdirSync('public', {recursive: true});\""
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  }
+}
+
