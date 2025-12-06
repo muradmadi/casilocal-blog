@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>CasiLocal Blog</title>
+    <link>https://casilocal.com</link>
+    <description>Madrid, unfiltered. The static guide to the capital. No tourist traps, just the spots where locals actually live, eat, and stay.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 06 Dec 2025 17:57:01 GMT</lastBuildDate>
+    <pubDate>Sat, 06 Dec 2025 17:57:01 GMT</pubDate>
+    <ttl>60</ttl>
+    <image>
+      <url>https://casilocal.com/assets/images/logo.png</url>
+      <title>CasiLocal</title>
+      <link>https://casilocal.com</link>
+    </image>
+    <item>
+      <title><![CDATA[Culture & Museums in Madrid: A Student's Cultural Guide]]></title>
+      <link>https://casilocal.com/blog/sample-culture.html</link>
+      <guid isPermaLink="true">https://casilocal.com/blog/sample-culture.html</guid>
+      <description><![CDATA[Explore Madrid's rich cultural scene. From world-class museums to hidden galleries, discover the art and culture that makes Madrid special.]]></description>
+      <pubDate>Sun, 25 Feb 2024 00:00:00 GMT</pubDate>
+      <author>CasiLocal Team</author>
+      <category>Culture</category>
+      <enclosure url="https://casilocal.com/assets/images/culture.jpg" type="image/jpeg"/>
+    </item>
+    <item>
+      <title><![CDATA[Getting Around Madrid: Transportation Guide for Students]]></title>
+      <link>https://casilocal.com/blog/sample-transportation.html</link>
+      <guid isPermaLink="true">https://casilocal.com/blog/sample-transportation.html</guid>
+      <description><![CDATA[Master Madrid's transportation system. Learn about metro passes, bike sharing, and how to navigate the city efficiently as a student.]]></description>
+      <pubDate>Tue, 20 Feb 2024 00:00:00 GMT</pubDate>
+      <author>CasiLocal Team</author>
+      <category>Transportation</category>
+      <enclosure url="https://casilocal.com/assets/images/transportation.jpg" type="image/jpeg"/>
+    </item>
+    <item>
+      <title><![CDATA[Madrid Neighborhoods: A Student's Guide]]></title>
+      <link>https://casilocal.com/blog/sample-neighborhoods.html</link>
+      <guid isPermaLink="true">https://casilocal.com/blog/sample-neighborhoods.html</guid>
+      <description><![CDATA[Explore Madrid's neighborhoods through a student's lens. Find the best areas to live, study, and explore in the capital.]]></description>
+      <pubDate>Thu, 15 Feb 2024 00:00:00 GMT</pubDate>
+      <author>CasiLocal Team</author>
+      <category>Neighborhoods</category>
+      <enclosure url="https://casilocal.com/assets/images/neighborhoods.jpg" type="image/jpeg"/>
+    </item>
+    <item>
+      <title><![CDATA[Budget Tips for Students Living in Madrid]]></title>
+      <link>https://casilocal.com/blog/sample-budget.html</link>
+      <guid isPermaLink="true">https://casilocal.com/blog/sample-budget.html</guid>
+      <description><![CDATA[Learn how to stretch your euros in Madrid. Student discounts, budget-friendly tips, and money-saving strategies for living in the capital.]]></description>
+      <pubDate>Sat, 10 Feb 2024 00:00:00 GMT</pubDate>
+      <author>CasiLocal Team</author>
+      <category>Budget Tips</category>
+      <enclosure url="https://casilocal.com/assets/images/budget.jpg" type="image/jpeg"/>
+    </item>
+    <item>
+      <title><![CDATA[Best Study Spots in Madrid for Students]]></title>
+      <link>https://casilocal.com/blog/sample-study-spots.html</link>
+      <guid isPermaLink="true">https://casilocal.com/blog/sample-study-spots.html</guid>
+      <description><![CDATA[Find the perfect place to study in Madrid. From quiet libraries to cozy cafes with great WiFi, discover your ideal workspace.]]></description>
+      <pubDate>Thu, 01 Feb 2024 00:00:00 GMT</pubDate>
+      <author>CasiLocal Team</author>
+      <category>Study Spots</category>
+      <enclosure url="https://casilocal.com/assets/images/study-spots.jpg" type="image/jpeg"/>
+    </item>
+    <item>
+      <title><![CDATA[Must-Attend Events in Madrid This Semester]]></title>
+      <link>https://casilocal.com/blog/sample-events.html</link>
+      <guid isPermaLink="true">https://casilocal.com/blog/sample-events.html</guid>
+      <description><![CDATA[Don't miss out on these exciting events happening in Madrid. From cultural festivals to music concerts, there's something for every student.]]></description>
+      <pubDate>Thu, 25 Jan 2024 00:00:00 GMT</pubDate>
+      <author>CasiLocal Team</author>
+      <category>Events</category>
+      <enclosure url="https://casilocal.com/assets/images/events.jpg" type="image/jpeg"/>
+    </item>
+    <item>
+      <title><![CDATA[Top Student-Friendly Bars in Madrid]]></title>
+      <link>https://casilocal.com/blog/sample-bars.html</link>
+      <guid isPermaLink="true">https://casilocal.com/blog/sample-bars.html</guid>
+      <description><![CDATA[Explore the best bars in Madrid where students can enjoy great drinks, good vibes, and affordable prices. From rooftop terraces to cozy pubs.]]></description>
+      <pubDate>Sat, 20 Jan 2024 00:00:00 GMT</pubDate>
+      <author>CasiLocal Team</author>
+      <category>Bars</category>
+      <enclosure url="https://casilocal.com/assets/images/bars.jpg" type="image/jpeg"/>
+    </item>
+    <item>
+      <title><![CDATA[Best Budget-Friendly Restaurants in Madrid for Students]]></title>
+      <link>https://casilocal.com/blog/sample-restaurant.html</link>
+      <guid isPermaLink="true">https://casilocal.com/blog/sample-restaurant.html</guid>
+      <description><![CDATA[Discover amazing restaurants in Madrid that won't break your student budget. From traditional tapas to international cuisine, we've got you covered.]]></description>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 GMT</pubDate>
+      <author>CasiLocal Team</author>
+      <category>Restaurants</category>
+      <enclosure url="https://casilocal.com/assets/images/restaurant.jpg" type="image/jpeg"/>
+    </item>
+  </channel>
+</rss>

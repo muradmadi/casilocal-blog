@@ -3,8 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
   <meta name="description" content="CasiLocal Blog - Discover the best restaurants, bars, and events in Madrid">
   <title>Blog - CasiLocal</title>
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://casilocal.com/blog/index.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://casilocal.com/blog/index.html">
+  <meta property="og:title" content="Blog - CasiLocal">
+  <meta property="og:description" content="CasiLocal Blog - Discover the best restaurants, bars, and events in Madrid">
+  <meta property="og:image" content="https://casilocal.com/assets/images/hero-image.jpg">
+  <meta property="og:site_name" content="CasiLocal">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://casilocal.com/blog/index.html">
+  <meta name="twitter:title" content="Blog - CasiLocal">
+  <meta name="twitter:description" content="CasiLocal Blog - Discover the best restaurants, bars, and events in Madrid">
+  <meta name="twitter:image" content="https://casilocal.com/assets/images/hero-image.jpg">
   
   <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -20,11 +39,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
+  
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div id="navbar-container"></div>
 
-  <main>
+  <main id="main-content">
     <section class="section" style="padding-top: 4rem;">
       <div class="container">
         <h1 class="section-title">CasiLocal Blog</h1>
@@ -35,7 +58,7 @@
           
       <article class="blog-card" data-category="culture">
         <a href="/blog/sample-culture.html" class="blog-card-link">
-          <img src="/assets/images/culture.jpg" alt="Culture & Museums in Madrid: A Student's Cultural Guide" class="blog-card-image">
+          <img src="/assets/images/culture.jpg" alt="Culture & Museums in Madrid: A Student's Cultural Guide" class="blog-card-image" loading="lazy" width="300" height="200">
           <div class="blog-card-content">
             <span class="blog-card-category">Culture</span>
             <h3 class="blog-card-title">Culture & Museums in Madrid: A Student's Cultural Guide</h3>
@@ -52,7 +75,7 @@
     
       <article class="blog-card" data-category="transportation">
         <a href="/blog/sample-transportation.html" class="blog-card-link">
-          <img src="/assets/images/transportation.jpg" alt="Getting Around Madrid: Transportation Guide for Students" class="blog-card-image">
+          <img src="/assets/images/transportation.jpg" alt="Getting Around Madrid: Transportation Guide for Students" class="blog-card-image" loading="lazy" width="300" height="200">
           <div class="blog-card-content">
             <span class="blog-card-category">Transportation</span>
             <h3 class="blog-card-title">Getting Around Madrid: Transportation Guide for Students</h3>
@@ -69,7 +92,7 @@
     
       <article class="blog-card" data-category="neighborhoods">
         <a href="/blog/sample-neighborhoods.html" class="blog-card-link">
-          <img src="/assets/images/neighborhoods.jpg" alt="Madrid Neighborhoods: A Student's Guide" class="blog-card-image">
+          <img src="/assets/images/neighborhoods.jpg" alt="Madrid Neighborhoods: A Student's Guide" class="blog-card-image" loading="lazy" width="300" height="200">
           <div class="blog-card-content">
             <span class="blog-card-category">Neighborhoods</span>
             <h3 class="blog-card-title">Madrid Neighborhoods: A Student's Guide</h3>
@@ -86,7 +109,7 @@
     
       <article class="blog-card" data-category="budget tips">
         <a href="/blog/sample-budget.html" class="blog-card-link">
-          <img src="/assets/images/budget.jpg" alt="Budget Tips for Students Living in Madrid" class="blog-card-image">
+          <img src="/assets/images/budget.jpg" alt="Budget Tips for Students Living in Madrid" class="blog-card-image" loading="lazy" width="300" height="200">
           <div class="blog-card-content">
             <span class="blog-card-category">Budget Tips</span>
             <h3 class="blog-card-title">Budget Tips for Students Living in Madrid</h3>
@@ -103,7 +126,7 @@
     
       <article class="blog-card" data-category="study spots">
         <a href="/blog/sample-study-spots.html" class="blog-card-link">
-          <img src="/assets/images/study-spots.jpg" alt="Best Study Spots in Madrid for Students" class="blog-card-image">
+          <img src="/assets/images/study-spots.jpg" alt="Best Study Spots in Madrid for Students" class="blog-card-image" loading="lazy" width="300" height="200">
           <div class="blog-card-content">
             <span class="blog-card-category">Study Spots</span>
             <h3 class="blog-card-title">Best Study Spots in Madrid for Students</h3>
@@ -120,7 +143,7 @@
     
       <article class="blog-card" data-category="events">
         <a href="/blog/sample-events.html" class="blog-card-link">
-          <img src="/assets/images/events.jpg" alt="Must-Attend Events in Madrid This Semester" class="blog-card-image">
+          <img src="/assets/images/events.jpg" alt="Must-Attend Events in Madrid This Semester" class="blog-card-image" loading="lazy" width="300" height="200">
           <div class="blog-card-content">
             <span class="blog-card-category">Events</span>
             <h3 class="blog-card-title">Must-Attend Events in Madrid This Semester</h3>
@@ -137,7 +160,7 @@
     
       <article class="blog-card" data-category="bars & nightlife">
         <a href="/blog/sample-bars.html" class="blog-card-link">
-          <img src="/assets/images/bars.jpg" alt="Top Student-Friendly Bars in Madrid" class="blog-card-image">
+          <img src="/assets/images/bars.jpg" alt="Top Student-Friendly Bars in Madrid" class="blog-card-image" loading="lazy" width="300" height="200">
           <div class="blog-card-content">
             <span class="blog-card-category">Bars</span>
             <h3 class="blog-card-title">Top Student-Friendly Bars in Madrid</h3>
@@ -154,7 +177,7 @@
     
       <article class="blog-card" data-category="restaurants">
         <a href="/blog/sample-restaurant.html" class="blog-card-link">
-          <img src="/assets/images/restaurant.jpg" alt="Best Budget-Friendly Restaurants in Madrid for Students" class="blog-card-image">
+          <img src="/assets/images/restaurant.jpg" alt="Best Budget-Friendly Restaurants in Madrid for Students" class="blog-card-image" loading="lazy" width="300" height="200">
           <div class="blog-card-content">
             <span class="blog-card-category">Restaurants</span>
             <h3 class="blog-card-title">Best Budget-Friendly Restaurants in Madrid for Students</h3>
@@ -180,5 +203,11 @@
   <script src="/js/components/navbar.js"></script>
   <script src="/js/components/footer.js"></script>
   <script src="/js/main.js"></script>
+  <script>
+    // Initialize Feather icons
+    if (typeof feather !== 'undefined') {
+      feather.replace();
+    }
+  </script>
 </body>
 </html>

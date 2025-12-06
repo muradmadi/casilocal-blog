@@ -3,8 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
   <meta name="description" content="Master Madrid&#39;s transportation system. Learn about metro passes, bike sharing, and how to navigate the city efficiently as a student.">
   <title>Getting Around Madrid: Transportation Guide for Students - CasiLocal</title>
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://casilocal.com/blog/sample-transportation.html">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://casilocal.com/blog/sample-transportation.html">
+  <meta property="og:title" content="Getting Around Madrid: Transportation Guide for Students - CasiLocal">
+  <meta property="og:description" content="Master Madrid&#39;s transportation system. Learn about metro passes, bike sharing, and how to navigate the city efficiently as a student.">
+  
+  <meta property="og:image" content="https://casilocal.com/assets/images/transportation.jpg">
+  
+  <meta property="og:image" content="https://casilocal.com/assets/images/hero-image.jpg">
+  
+  <meta property="og:site_name" content="CasiLocal">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://casilocal.com/blog/sample-transportation.html">
+  <meta name="twitter:title" content="Getting Around Madrid: Transportation Guide for Students - CasiLocal">
+  <meta name="twitter:description" content="Master Madrid&#39;s transportation system. Learn about metro passes, bike sharing, and how to navigate the city efficiently as a student.">
+  
+  <meta name="twitter:image" content="https://casilocal.com/assets/images/transportation.jpg">
+  
+  <meta name="twitter:image" content="https://casilocal.com/assets/images/hero-image.jpg">
+  
   
   <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -20,11 +47,70 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
+  
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+  
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Getting Around Madrid: Transportation Guide for Students",
+    "description": "Master Madrid&#39;s transportation system. Learn about metro passes, bike sharing, and how to navigate the city efficiently as a student.",
+    "image": "https://casilocal.com/assets/images/transportation.jpghttps://casilocal.com/assets/images/hero-image.jpg",
+    "datePublished": "2024-02-20T00:00:00.000Z",
+    "dateModified": "2024-02-20T00:00:00.000Z",
+    "author": {
+      "@type": "Organization",
+      "name": "CasiLocal Team"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "CasiLocal",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://casilocal.com/assets/images/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://casilocal.com/blog/sample-transportation.html"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://casilocal.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://casilocal.com/blog/index.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Getting Around Madrid: Transportation Guide for Students",
+        "item": "https://casilocal.com/blog/sample-transportation.html"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div id="navbar-container"></div>
 
-  <main>
+  <main id="main-content">
     <article class="blog-post">
       <div class="container">
         <div class="blog-post-header">
@@ -32,10 +118,13 @@
           <h1 class="blog-post-title">Getting Around Madrid: Transportation Guide for Students</h1>
           <div class="blog-post-meta">
             <span>By CasiLocal Team</span>
+            <span>•</span>
             <span>February 20, 2024</span>
+            <span>•</span>
+            <span>2 min read</span>
           </div>
           
-          <img src="/assets/images/transportation.jpg" alt="Getting Around Madrid: Transportation Guide for Students" class="blog-post-image">
+          <img src="/assets/images/transportation.jpg" alt="Getting Around Madrid: Transportation Guide for Students" class="blog-post-image" loading="lazy" width="800" height="400">
           
         </div>
         <div class="blog-post-content">
@@ -100,15 +189,21 @@
         </div>
       </div>
     </article>
+    
   </main>
 
   <div id="footer-container"></div>
 
   <script src="/js/components/button.js"></script>
-  <script src="/js/components/button.js"></script>
   <script src="/js/components/navbar.js"></script>
   <script src="/js/components/footer.js"></script>
   <script src="/js/main.js"></script>
+  <script>
+    // Initialize Feather icons
+    if (typeof feather !== 'undefined') {
+      feather.replace();
+    }
+  </script>
 </body>
 </html>
 

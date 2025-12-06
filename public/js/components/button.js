@@ -19,13 +19,14 @@ class Button {
   render() {
     const buttonClasses = `button button-${this.options.type} ${this.options.className}`.trim();
     const buttonId = this.options.id ? `id="${this.options.id}"` : '';
+    const ariaLabel = this.options.ariaLabel ? `aria-label="${this.options.ariaLabel}"` : '';
     
     if (this.options.href) {
-      return `<a href="${this.options.href}" class="${buttonClasses}" ${buttonId}>${this.text}</a>`;
+      return `<a href="${this.options.href}" class="${buttonClasses}" ${buttonId} ${ariaLabel}>${this.text}</a>`;
     }
 
     const onClickAttr = this.options.onClick ? `onclick="${this.options.onClick}"` : '';
-    return `<button class="${buttonClasses}" ${buttonId} ${onClickAttr}>${this.text}</button>`;
+    return `<button class="${buttonClasses}" ${buttonId} ${ariaLabel} ${onClickAttr}>${this.text}</button>`;
   }
 
   static create(text, options = {}) {

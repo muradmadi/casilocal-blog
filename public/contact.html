@@ -3,8 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
   <meta name="description" content="Get in touch with CasiLocal - Share your Madrid experiences and suggestions">
   <title>Contact - CasiLocal</title>
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://casilocal.com/contact.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://casilocal.com/contact.html">
+  <meta property="og:title" content="Contact - CasiLocal">
+  <meta property="og:description" content="Get in touch with CasiLocal - Share your Madrid experiences and suggestions">
+  <meta property="og:image" content="https://casilocal.com/assets/images/hero-image.jpg">
+  <meta property="og:site_name" content="CasiLocal">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://casilocal.com/contact.html">
+  <meta name="twitter:title" content="Contact - CasiLocal">
+  <meta name="twitter:description" content="Get in touch with CasiLocal - Share your Madrid experiences and suggestions">
+  <meta name="twitter:image" content="https://casilocal.com/assets/images/hero-image.jpg">
   
   <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -20,11 +39,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
+  
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div id="navbar-container"></div>
 
-  <main>
+  <main id="main-content">
     <section class="section" style="padding-top: 4rem;">
       <div class="container">
         <div style="max-width: 600px; margin: 0 auto;">
@@ -35,6 +58,8 @@
           </p>
 
           <form id="contact-form" style="background-color: var(--bg-light); padding: 2rem; border-radius: 8px;">
+            <div id="form-error-message" class="form-error-message" style="display: none; background-color: var(--action-red); color: var(--bg-paper); padding: 1rem; margin-bottom: 1rem; border: 2px solid var(--text-ink); font-weight: 600;"></div>
+            <div id="form-success-message" class="form-success-message" style="display: none; background-color: var(--highlight-yellow); color: var(--text-ink); padding: 1rem; margin-bottom: 1rem; border: 2px solid var(--text-ink); font-weight: 600;"></div>
             <div class="form-group">
               <label for="name" class="form-label">Name</label>
               <input type="text" id="name" name="name" class="form-input" required>
@@ -76,6 +101,12 @@
   <script src="/js/components/navbar.js"></script>
   <script src="/js/components/footer.js"></script>
   <script src="/js/main.js"></script>
+  <script>
+    // Initialize Feather icons
+    if (typeof feather !== 'undefined') {
+      feather.replace();
+    }
+  </script>
 </body>
 </html>
 

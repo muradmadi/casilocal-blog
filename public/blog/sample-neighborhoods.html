@@ -3,8 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
   <meta name="description" content="Explore Madrid&#39;s neighborhoods through a student&#39;s lens. Find the best areas to live, study, and explore in the capital.">
   <title>Madrid Neighborhoods: A Student&#39;s Guide - CasiLocal</title>
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://casilocal.com/blog/sample-neighborhoods.html">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://casilocal.com/blog/sample-neighborhoods.html">
+  <meta property="og:title" content="Madrid Neighborhoods: A Student&#39;s Guide - CasiLocal">
+  <meta property="og:description" content="Explore Madrid&#39;s neighborhoods through a student&#39;s lens. Find the best areas to live, study, and explore in the capital.">
+  
+  <meta property="og:image" content="https://casilocal.com/assets/images/neighborhoods.jpg">
+  
+  <meta property="og:image" content="https://casilocal.com/assets/images/hero-image.jpg">
+  
+  <meta property="og:site_name" content="CasiLocal">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://casilocal.com/blog/sample-neighborhoods.html">
+  <meta name="twitter:title" content="Madrid Neighborhoods: A Student&#39;s Guide - CasiLocal">
+  <meta name="twitter:description" content="Explore Madrid&#39;s neighborhoods through a student&#39;s lens. Find the best areas to live, study, and explore in the capital.">
+  
+  <meta name="twitter:image" content="https://casilocal.com/assets/images/neighborhoods.jpg">
+  
+  <meta name="twitter:image" content="https://casilocal.com/assets/images/hero-image.jpg">
+  
   
   <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -20,11 +47,70 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
+  
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+  
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Madrid Neighborhoods: A Student&#39;s Guide",
+    "description": "Explore Madrid&#39;s neighborhoods through a student&#39;s lens. Find the best areas to live, study, and explore in the capital.",
+    "image": "https://casilocal.com/assets/images/neighborhoods.jpghttps://casilocal.com/assets/images/hero-image.jpg",
+    "datePublished": "2024-02-15T00:00:00.000Z",
+    "dateModified": "2024-02-15T00:00:00.000Z",
+    "author": {
+      "@type": "Organization",
+      "name": "CasiLocal Team"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "CasiLocal",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://casilocal.com/assets/images/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://casilocal.com/blog/sample-neighborhoods.html"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://casilocal.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://casilocal.com/blog/index.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Madrid Neighborhoods: A Student&#39;s Guide",
+        "item": "https://casilocal.com/blog/sample-neighborhoods.html"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div id="navbar-container"></div>
 
-  <main>
+  <main id="main-content">
     <article class="blog-post">
       <div class="container">
         <div class="blog-post-header">
@@ -32,10 +118,13 @@
           <h1 class="blog-post-title">Madrid Neighborhoods: A Student&#39;s Guide</h1>
           <div class="blog-post-meta">
             <span>By CasiLocal Team</span>
+            <span>•</span>
             <span>February 15, 2024</span>
+            <span>•</span>
+            <span>2 min read</span>
           </div>
           
-          <img src="/assets/images/neighborhoods.jpg" alt="Madrid Neighborhoods: A Student&#39;s Guide" class="blog-post-image">
+          <img src="/assets/images/neighborhoods.jpg" alt="Madrid Neighborhoods: A Student&#39;s Guide" class="blog-post-image" loading="lazy" width="800" height="400">
           
         </div>
         <div class="blog-post-content">
@@ -70,15 +159,21 @@
         </div>
       </div>
     </article>
+    
   </main>
 
   <div id="footer-container"></div>
 
   <script src="/js/components/button.js"></script>
-  <script src="/js/components/button.js"></script>
   <script src="/js/components/navbar.js"></script>
   <script src="/js/components/footer.js"></script>
   <script src="/js/main.js"></script>
+  <script>
+    // Initialize Feather icons
+    if (typeof feather !== 'undefined') {
+      feather.replace();
+    }
+  </script>
 </body>
 </html>
 

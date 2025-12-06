@@ -3,11 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
     <meta
       name="description"
       content="CasiLocal - Your guide to the best restaurants, bars, and events in Madrid for students"
     />
     <title>CasiLocal</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://casilocal.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://casilocal.com/">
+    <meta property="og:title" content="CasiLocal - Madrid, unfiltered">
+    <meta property="og:description" content="CasiLocal - Your guide to the best restaurants, bars, and events in Madrid for students">
+    <meta property="og:image" content="https://casilocal.com/assets/images/hero-image.jpg">
+    <meta property="og:site_name" content="CasiLocal">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://casilocal.com/">
+    <meta name="twitter:title" content="CasiLocal - Madrid, unfiltered">
+    <meta name="twitter:description" content="CasiLocal - Your guide to the best restaurants, bars, and events in Madrid for students">
+    <meta name="twitter:image" content="https://casilocal.com/assets/images/hero-image.jpg">
 
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -26,11 +45,37 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/css/styles.css" />
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "CasiLocal",
+      "url": "https://casilocal.com",
+      "logo": "https://casilocal.com/assets/images/logo.png",
+      "description": "Your guide to the best restaurants, bars, and events in Madrid for students",
+      "sameAs": []
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "CasiLocal",
+      "url": "https://casilocal.com",
+      "description": "Madrid, unfiltered. The static guide to the capital. No tourist traps, just the spots where locals actually live, eat, and stay."
+    }
+    </script>
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <div id="navbar-container"></div>
 
-    <main>
+    <main id="main-content">
       <section class="hero">
         <div class="container">
           <div class="hero-grid">
@@ -87,6 +132,9 @@
                   src="/assets/images/hero-image.jpg"
                   alt="Madrid"
                   class="hero-image"
+                  width="800"
+                  height="600"
+                  loading="eager"
                 />
                 <div class="hero-image-overlay">
                   <div class="hero-image-label">Madrid, Spain</div>
@@ -132,6 +180,26 @@
     <script src="/js/components/footer.js"></script>
     <script src="/js/main.js"></script>
     <script>
+      // Initialize Feather icons
+      if (typeof feather !== 'undefined') {
+        feather.replace();
+      }
+    </script>
+    <script>
+      // Register service worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('Service Worker registered:', registration.scope);
+            })
+            .catch((error) => {
+              console.log('Service Worker registration failed:', error);
+            });
+        });
+      }
+    </script>
+    <script>
       // Initialize hero button
       document.addEventListener("DOMContentLoaded", function () {
         const heroButtonContainer = document.getElementById(
@@ -148,31 +216,57 @@
     <script>
       // Load featured posts on homepage
       document.addEventListener("DOMContentLoaded", function () {
-        fetch("/blog/index.html")
-          .then((response) => response.text())
-          .then((html) => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, "text/html");
-            const blogCards = doc.querySelectorAll(".blog-card");
-            const featuredContainer = document.getElementById("featured-posts");
+        const featuredContainer = document.getElementById("featured-posts");
+        
+        if (!featuredContainer) {
+          console.warn("Featured posts container not found");
+          return;
+        }
 
-            if (blogCards.length > 0) {
-              featuredContainer.innerHTML = "";
-              // Show first 3 posts as featured
-              Array.from(blogCards)
-                .slice(0, 3)
-                .forEach((card) => {
-                  featuredContainer.appendChild(card.cloneNode(true));
-                });
-            } else {
-              featuredContainer.innerHTML =
-                '<p style="text-align: center; color: var(--text-light);">No posts yet. Check back soon!</p>';
+        // Show loading state
+        featuredContainer.innerHTML = '<p style="text-align: center; color: var(--text-light);">Loading featured posts...</p>';
+
+        fetch("/blog/index.html")
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+          })
+          .then((html) => {
+            try {
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(html, "text/html");
+              
+              // Check for parsing errors
+              const parserError = doc.querySelector("parsererror");
+              if (parserError) {
+                throw new Error("Failed to parse HTML");
+              }
+
+              const blogCards = doc.querySelectorAll(".blog-card");
+
+              if (blogCards.length > 0) {
+                featuredContainer.innerHTML = "";
+                // Show first 3 posts as featured
+                Array.from(blogCards)
+                  .slice(0, 3)
+                  .forEach((card) => {
+                    featuredContainer.appendChild(card.cloneNode(true));
+                  });
+              } else {
+                featuredContainer.innerHTML =
+                  '<p style="text-align: center; color: var(--text-light);">No posts yet. Check back soon!</p>';
+              }
+            } catch (parseError) {
+              console.error("Error parsing featured posts HTML:", parseError);
+              throw parseError;
             }
           })
           .catch((error) => {
             console.error("Error loading featured posts:", error);
-            document.getElementById("featured-posts").innerHTML =
-              '<p style="text-align: center; color: var(--text-light);">Unable to load featured posts.</p>';
+            featuredContainer.innerHTML =
+              '<p style="text-align: center; color: var(--text-light);">Unable to load featured posts. Please refresh the page to try again.</p>';
           });
       });
     </script>

@@ -21,6 +21,9 @@ const PUBLIC_BLOG_DIR = path.join(__dirname, 'public', 'blog');
 const PUBLIC_CATEGORY_DIR = path.join(__dirname, 'public', 'blog', 'category');
 const TEMPLATES_DIR = path.join(__dirname, 'templates');
 
+// Site configuration
+const SITE_URL = process.env.SITE_URL || 'https://casilocal.com';
+
 /**
  * Read and parse a Markdown file
  */
@@ -93,7 +96,7 @@ function generateCardHTML(post) {
   return `
       <article class="blog-card" data-category="${normalizedCategory}">
         <a href="/blog/${slug}.html" class="blog-card-link">
-          ${image ? `<img src="${image}" alt="${frontmatter.title}" class="blog-card-image">` : ''}
+          ${image ? `<img src="${image}" alt="${frontmatter.title}" class="blog-card-image" loading="lazy" width="300" height="200">` : ''}
           <div class="blog-card-content">
             <span class="blog-card-category">${category}</span>
             <h3 class="blog-card-title">${frontmatter.title || 'Untitled'}</h3>
@@ -145,20 +148,80 @@ function renderTemplate(template, data) {
 /**
  * Generate individual blog post HTML
  */
-function generatePostHTML(post, slug) {
+function generatePostHTML(post, slug, allPosts) {
   const templatePath = path.join(TEMPLATES_DIR, 'post.html');
   const template = fs.readFileSync(templatePath, 'utf-8');
+
+  const canonicalUrl = `${SITE_URL}/blog/${slug}.html`;
+  const image = post.frontmatter.image || '';
+  const ogImage = image ? (image.startsWith('http') ? image : `${SITE_URL}${image}`) : '';
+  
+  const postDate = post.frontmatter.date ? new Date(post.frontmatter.date) : new Date();
+  const datePublished = postDate.toISOString();
+  const dateModified = postDate.toISOString(); // Could be updated later if needed
+
+  // Calculate reading time (average 200 words per minute)
+  const wordCount = post.content.split(/\s+/).length;
+  const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+
+  // Find related posts (same category, excluding current post, limit to 3)
+  const relatedPosts = allPosts
+    .filter(p => p.slug !== slug && p.normalizedCategory === post.normalizedCategory)
+    .slice(0, 3)
+    .map(p => ({
+      title: p.frontmatter.title || 'Untitled',
+      slug: p.slug,
+      excerpt: p.frontmatter.excerpt || '',
+      image: p.frontmatter.image || '',
+      date: p.frontmatter.date 
+        ? format(new Date(p.frontmatter.date), 'MMMM d, yyyy')
+        : format(new Date(), 'MMMM d, yyyy')
+    }));
+
+  // Generate related posts HTML
+  let relatedPostsHTML = '';
+  if (relatedPosts.length > 0) {
+    relatedPostsHTML = `
+      <section class="related-posts">
+        <div class="container">
+          <h2 class="section-title">Related Posts</h2>
+          <div class="blog-grid">
+            ${relatedPosts.map(relatedPost => `
+              <article class="blog-card">
+                <a href="/blog/${relatedPost.slug}.html" class="blog-card-link">
+                  ${relatedPost.image ? `<img src="${relatedPost.image}" alt="${relatedPost.title}" class="blog-card-image" loading="lazy" width="300" height="200">` : ''}
+                  <div class="blog-card-content">
+                    <h3 class="blog-card-title">${relatedPost.title}</h3>
+                    <div class="blog-card-meta">
+                      <span>${relatedPost.date}</span>
+                    </div>
+                    ${relatedPost.excerpt ? `<p class="blog-card-excerpt">${relatedPost.excerpt}</p>` : ''}
+                    <span class="button button-primary blog-card-button">Read More</span>
+                  </div>
+                </a>
+              </article>
+            `).join('')}
+          </div>
+        </div>
+      </section>
+    `;
+  }
 
   const postData = {
     title: post.frontmatter.title || 'Untitled',
     author: post.frontmatter.author || 'CasiLocal Team',
-    date: post.frontmatter.date 
-      ? format(new Date(post.frontmatter.date), 'MMMM d, yyyy')
-      : format(new Date(), 'MMMM d, yyyy'),
+    date: format(postDate, 'MMMM d, yyyy'),
+    datePublished: datePublished,
+    dateModified: dateModified,
     category: post.frontmatter.category || 'General',
-    image: post.frontmatter.image || '',
+    image: image,
     excerpt: post.frontmatter.excerpt || '',
-    content: post.content
+    content: post.content,
+    canonicalUrl: canonicalUrl,
+    siteUrl: SITE_URL,
+    ogImage: ogImage,
+    readingTime: readingTime,
+    relatedPosts: relatedPostsHTML
   };
 
   return renderTemplate(template, postData);
@@ -182,8 +245,27 @@ function generateBlogListing(posts) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
   <meta name="description" content="CasiLocal Blog - Discover the best restaurants, bars, and events in Madrid">
   <title>Blog - CasiLocal</title>
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="${SITE_URL}/blog/index.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="${SITE_URL}/blog/index.html">
+  <meta property="og:title" content="Blog - CasiLocal">
+  <meta property="og:description" content="CasiLocal Blog - Discover the best restaurants, bars, and events in Madrid">
+  <meta property="og:image" content="${SITE_URL}/assets/images/hero-image.jpg">
+  <meta property="og:site_name" content="CasiLocal">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="${SITE_URL}/blog/index.html">
+  <meta name="twitter:title" content="Blog - CasiLocal">
+  <meta name="twitter:description" content="CasiLocal Blog - Discover the best restaurants, bars, and events in Madrid">
+  <meta name="twitter:image" content="${SITE_URL}/assets/images/hero-image.jpg">
   
   <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -199,11 +281,15 @@ function generateBlogListing(posts) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
+  
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div id="navbar-container"></div>
 
-  <main>
+  <main id="main-content">
     <section class="section" style="padding-top: 4rem;">
       <div class="container">
         <h1 class="section-title">CasiLocal Blog</h1>
@@ -223,6 +309,12 @@ function generateBlogListing(posts) {
   <script src="/js/components/navbar.js"></script>
   <script src="/js/components/footer.js"></script>
   <script src="/js/main.js"></script>
+  <script>
+    // Initialize Feather icons
+    if (typeof feather !== 'undefined') {
+      feather.replace();
+    }
+  </script>
 </body>
 </html>`;
 }
@@ -288,6 +380,7 @@ function generateCategoryPage(categoryName, posts) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
     <meta name="description" content="Discover ${categoryName} in Madrid for students" />
     <title>${badgeName} - CasiLocal</title>
 
@@ -308,11 +401,15 @@ function generateCategoryPage(categoryName, posts) {
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/css/styles.css" />
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <div id="navbar-container"></div>
 
-    <main>
+    <main id="main-content">
       <section class="category-hero">
         <div class="container">
           <div class="category-hero-content">
@@ -340,6 +437,12 @@ function generateCategoryPage(categoryName, posts) {
     <script src="/js/components/navbar.js"></script>
     <script src="/js/components/footer.js"></script>
     <script src="/js/main.js"></script>
+    <script>
+      // Initialize Feather icons
+      if (typeof feather !== 'undefined') {
+        feather.replace();
+      }
+    </script>
   </body>
 </html>`;
 }
@@ -367,6 +470,12 @@ async function build() {
       fs.writeFileSync(path.join(PUBLIC_BLOG_DIR, 'index.html'), listingHTML);
       console.log('Generated empty blog listing page');
       generateEmptyCategoryPages();
+      
+      // Generate empty sitemap and RSS
+      const sitemap = generateSitemap([]);
+      fs.writeFileSync(path.join(__dirname, 'public', 'sitemap.xml'), sitemap);
+      const rss = generateRSSFeed([]);
+      fs.writeFileSync(path.join(__dirname, 'public', 'feed.xml'), rss);
       return;
     }
 
@@ -390,13 +499,6 @@ async function build() {
       const category = normalizeCategory(post.frontmatter.category || 'General');
       post.normalizedCategory = category;
 
-      // Generate HTML
-      const html = generatePostHTML(post, slug);
-
-      // Write HTML file
-      const outputPath = path.join(PUBLIC_BLOG_DIR, `${slug}.html`);
-      fs.writeFileSync(outputPath, html);
-
       posts.push(post);
 
       // Group by category
@@ -404,6 +506,14 @@ async function build() {
         postsByCategory[category] = [];
       }
       postsByCategory[category].push(post);
+    }
+
+    // Generate individual blog post HTML files (now that we have all posts for related posts)
+    console.log('Generating blog post pages...');
+    for (const post of posts) {
+      const html = generatePostHTML(post, post.slug, posts);
+      const outputPath = path.join(PUBLIC_BLOG_DIR, `${post.slug}.html`);
+      fs.writeFileSync(outputPath, html);
     }
 
     // Generate blog listing page
@@ -432,13 +542,136 @@ async function build() {
       console.log(`  ✓ ${categorySlug}.html (${categoryPosts.length} posts)`);
     }
 
+    // Generate sitemap.xml
+    console.log('Generating sitemap.xml...');
+    const sitemap = generateSitemap(posts);
+    fs.writeFileSync(path.join(__dirname, 'public', 'sitemap.xml'), sitemap);
+    console.log('  ✓ sitemap.xml generated');
+
+    // Generate RSS feed
+    console.log('Generating RSS feed...');
+    const rss = generateRSSFeed(posts);
+    fs.writeFileSync(path.join(__dirname, 'public', 'feed.xml'), rss);
+    console.log('  ✓ feed.xml generated');
+
     console.log('\nBuild completed successfully!');
-    console.log(`Generated ${posts.length} blog post(s), 1 listing page, and ${Object.keys(categoryMap).length} category pages`);
+    console.log(`Generated ${posts.length} blog post(s), 1 listing page, ${Object.keys(categoryMap).length} category pages, sitemap.xml, and feed.xml`);
 
   } catch (error) {
     console.error('Build error:', error);
     process.exit(1);
   }
+}
+
+/**
+ * Generate sitemap.xml
+ */
+function generateSitemap(posts) {
+  const urls = [
+    { loc: SITE_URL, changefreq: 'daily', priority: '1.0' },
+    { loc: `${SITE_URL}/about.html`, changefreq: 'monthly', priority: '0.8' },
+    { loc: `${SITE_URL}/contact.html`, changefreq: 'monthly', priority: '0.8' },
+    { loc: `${SITE_URL}/blog/index.html`, changefreq: 'daily', priority: '0.9' }
+  ];
+
+  // Add category pages
+  const categoryMap = {
+    'restaurants': 'restaurants',
+    'bars & nightlife': 'bars',
+    'events': 'events',
+    'study spots': 'study-spots',
+    'budget tips': 'budget',
+    'neighborhoods': 'neighborhoods',
+    'transportation': 'transportation',
+    'culture': 'culture'
+  };
+
+  for (const [categoryName, categorySlug] of Object.entries(categoryMap)) {
+    urls.push({
+      loc: `${SITE_URL}/blog/category/${categorySlug}.html`,
+      changefreq: 'weekly',
+      priority: '0.7'
+    });
+  }
+
+  // Add blog posts
+  posts.forEach(post => {
+    const lastmod = post.frontmatter.date 
+      ? new Date(post.frontmatter.date).toISOString().split('T')[0]
+      : new Date().toISOString().split('T')[0];
+    urls.push({
+      loc: `${SITE_URL}/blog/${post.slug}.html`,
+      changefreq: 'monthly',
+      priority: '0.6',
+      lastmod: lastmod
+    });
+  });
+
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.map(url => `  <url>
+    <loc>${url.loc}</loc>
+    <changefreq>${url.changefreq}</changefreq>
+    <priority>${url.priority}</priority>
+    ${url.lastmod ? `    <lastmod>${url.lastmod}</lastmod>` : ''}
+  </url>`).join('\n')}
+</urlset>`;
+
+  return sitemap;
+}
+
+/**
+ * Generate RSS feed
+ */
+function generateRSSFeed(posts) {
+  // Sort posts by date (newest first)
+  const sortedPosts = posts.sort((a, b) => {
+    const dateA = a.frontmatter.date ? new Date(a.frontmatter.date) : new Date(0);
+    const dateB = b.frontmatter.date ? new Date(b.frontmatter.date) : new Date(0);
+    return dateB - dateA;
+  });
+
+  const items = sortedPosts.slice(0, 20).map(post => {
+    const pubDate = post.frontmatter.date 
+      ? new Date(post.frontmatter.date).toUTCString()
+      : new Date().toUTCString();
+    const link = `${SITE_URL}/blog/${post.slug}.html`;
+    const image = post.frontmatter.image 
+      ? (post.frontmatter.image.startsWith('http') ? post.frontmatter.image : `${SITE_URL}${post.frontmatter.image}`)
+      : `${SITE_URL}/assets/images/hero-image.jpg`;
+    
+    return `    <item>
+      <title><![CDATA[${post.frontmatter.title || 'Untitled'}]]></title>
+      <link>${link}</link>
+      <guid isPermaLink="true">${link}</guid>
+      <description><![CDATA[${post.frontmatter.excerpt || ''}]]></description>
+      <pubDate>${pubDate}</pubDate>
+      <author>${post.frontmatter.author || 'CasiLocal Team'}</author>
+      <category>${post.frontmatter.category || 'General'}</category>
+      <enclosure url="${image}" type="image/jpeg"/>
+    </item>`;
+  }).join('\n');
+
+  const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>CasiLocal Blog</title>
+    <link>${SITE_URL}</link>
+    <description>Madrid, unfiltered. The static guide to the capital. No tourist traps, just the spots where locals actually live, eat, and stay.</description>
+    <language>en</language>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+    <pubDate>${new Date().toUTCString()}</pubDate>
+    <ttl>60</ttl>
+    <image>
+      <url>${SITE_URL}/assets/images/logo.png</url>
+      <title>CasiLocal</title>
+      <link>${SITE_URL}</link>
+    </image>
+${items}
+  </channel>
+</rss>`;
+
+  return rss;
 }
 
 /**
