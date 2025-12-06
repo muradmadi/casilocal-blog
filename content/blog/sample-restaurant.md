@@ -13,38 +13,34 @@ Madrid is a food lover's paradise, but as a student, finding great food that fit
 
 ### 1. Mercado de San Miguel
 
-Located near Plaza Mayor, this historic market is perfect for trying a variety of Spanish dishes. While it can get touristy, the quality is excellent and you can sample small portions of everything from jamón ibérico to fresh seafood.
+While it might seem touristy, this covered market offers a great way to sample Spanish cuisine without committing to a full meal. Grab a few tapas and enjoy the atmosphere.
 
-**Price Range:** €5-15 per person  
-**Best For:** Trying multiple dishes in one visit
+**Price Range:** €3-8 per tapa  
+**Best For:** Trying multiple dishes
 
 ### 2. Casa Mono
 
-A hidden gem in the Malasaña neighborhood, Casa Mono serves traditional Spanish tapas at unbeatable prices. Their patatas bravas are legendary among local students.
+A hidden gem in La Latina, this tiny restaurant serves authentic Spanish dishes at unbeatable prices. The menu changes daily based on what's fresh at the market.
 
-**Price Range:** €8-12 per person  
-**Best For:** Authentic tapas experience
+**Price Range:** €8-12 for a full meal  
+**Best For:** Authentic local experience
 
 ## International Options
 
-### 3. La Buena Vida
+### 3. Tandoori Station
 
-This cozy restaurant in Chueca offers Mediterranean-inspired dishes with a modern twist. Their lunch menu is particularly student-friendly, offering a main course, drink, and dessert for just €12.
+Excellent Indian food at student-friendly prices. The lunch menu is particularly good value.
 
-**Price Range:** €10-15 per person  
-**Best For:** Lunch specials
+**Price Range:** €6-10  
+**Best For:** Spice lovers
 
-## Tips for Eating Out on a Budget
+## Tips for Eating on a Budget
 
-1. **Look for "Menú del Día"** – Many restaurants offer a fixed-price lunch menu (usually €10-15) that includes a starter, main course, dessert, and drink.
+1. **Look for "Menú del Día"** – Many restaurants offer a fixed-price lunch menu (usually €10-15) that includes starter, main, dessert, and drink.
 
-2. **Visit during lunch hours** – Lunch is typically cheaper than dinner in Madrid.
+2. **Visit during lunch hours** – Prices are often lower at lunchtime.
 
-3. **Share tapas** – Ordering several tapas to share is often more economical than individual main courses.
+3. **Share plates** – Tapas culture is perfect for students. Order a few plates to share with friends.
 
-4. **Check student discounts** – Some restaurants offer student discounts if you show your student ID.
-
-## Conclusion
-
-Eating well in Madrid doesn't have to be expensive. With a bit of research and these recommendations, you can enjoy amazing food while staying within your student budget. Happy eating!
+4. **Check student discounts** – Some places offer discounts with a student ID.
 

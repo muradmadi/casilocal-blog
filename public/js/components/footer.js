@@ -16,11 +16,14 @@ class Footer {
           { text: 'Contact', href: '/contact.html' }
         ],
         categories: [
-          { text: 'Restaurantes', href: '/blog/category/restaurants.html' },
-          { text: 'Bares', href: '/blog/category/bars.html' },
-          { text: 'Eventos', href: '/blog/category/events.html' },
-          { text: 'Lugares de Estudio', href: '/blog/category/study-spots.html' },
-          { text: 'Presupuesto', href: '/blog/category/budget.html' }
+          { text: 'Restaurants', href: '/blog/category/restaurants.html' },
+          { text: 'Bars & Nightlife', href: '/blog/category/bars.html' },
+          { text: 'Events', href: '/blog/category/events.html' },
+          { text: 'Study Spots', href: '/blog/category/study-spots.html' },
+          { text: 'Budget Tips', href: '/blog/category/budget.html' },
+          { text: 'Neighborhoods', href: '/blog/category/neighborhoods.html' },
+          { text: 'Transportation', href: '/blog/category/transportation.html' },
+          { text: 'Culture & Museums', href: '/blog/category/culture.html' }
         ]
       },
       social: options.social || [],
@@ -59,8 +62,10 @@ class Footer {
         <div class="container">
           <div class="footer-content">
             <div class="footer-section">
-              <h3>CasiLocal</h3>
-              <p>Madrid, sin filtros. Tu guía estática de la capital. Sin trampas turísticas, solo los lugares donde los locales realmente viven, comen y se quedan.</p>
+              <a href="/index.html" class="footer-logo">
+                <img src="/assets/images/logo.png" alt="CasiLocal" class="footer-logo-img">
+              </a>
+              <p>Madrid, unfiltered. The static guide to the capital. No tourist traps, just the spots where locals actually live, eat, and stay.</p>
             </div>
             <div class="footer-section">
               <h3>Quick Links</h3>
